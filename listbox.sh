@@ -20,7 +20,7 @@ listbox() {
         shift
         ;;
       -r|--result)
-        local result="$2"
+        local __result="$2"
         shift
         ;;
       *)
@@ -82,7 +82,7 @@ listbox() {
           draw
         fi
       elif [[ $key = "" ]]; then
-        eval "$result=\"${opts[$choice]}\""
+        eval "$__result=\"${opts[$choice]}\""
         break
       fi
     done
