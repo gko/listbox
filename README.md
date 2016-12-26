@@ -10,6 +10,17 @@ listbox -t Title -o "option 1|option 2|option 3" -r result
 echo "user chose: $result"
 ```
 
+output:
+```bash
+  Title
+  -----
+  option 1
+> option 2
+  option 3
+  
+user chose: option 2
+```
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
