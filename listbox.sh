@@ -7,7 +7,7 @@ listbox() {
 
     case $key in
       -h|--help)
-        echo "listbox -t title -o \"option 1|option 2|option 3\" -r resultVariable"
+        echo "listbox -t title -o \"option 1|option 2|option 3\" -r resultVariable -a '>'"
         return 0
         shift
         ;;
@@ -23,11 +23,18 @@ listbox() {
         local __result="$2"
         shift
         ;;
-      *)
+      -a|--arrow)
+        local arrow="$2"
+        shift
         ;;
+      *)
     esac
     shift
   done
+
+  if [[ -z $arrow ]]; then
+    arrow=">"
+  fi
 
   local len=${#opts[@]}
 
@@ -46,7 +53,7 @@ listbox() {
     do
       local str="";
       if [ $idx -eq $choice ]; then
-        str+="> "
+        str+="$arrow "
       else
         str+="  "
       fi
@@ -82,7 +89,11 @@ listbox() {
           draw
         fi
       elif [[ $key = "" ]]; then
-        eval "$__result=\"${opts[$choice]}\""
+        if [[ -n $__result ]]; then
+          eval "$__result=\"${opts[$choice]}\""
+        else
+          echo "${opts[$choice]}"
+        fi
         break
       fi
     done
