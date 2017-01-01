@@ -92,7 +92,7 @@ listbox() {
         if [[ -n $__result ]]; then
           eval "$__result=\"${opts[$choice]}\""
         else
-          echo -e "\n${opts[$choice]}"
+          echo -e "\n ${opts[$choice]}"
         fi
         break
       fi
