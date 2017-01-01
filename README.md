@@ -57,7 +57,7 @@ user chose: option 2
 
 ## Like it?
 
-(:star: this repo)[]
+:star: this repo
 
 ## License
 
