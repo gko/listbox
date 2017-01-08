@@ -59,7 +59,7 @@ user chose: option 2
 
 In zsh you can use it like this:
 ```bash
-$(bash -c ". listbox.sh && listbox -t \"Title\" -o \"option 1|option 2|option 3\" | tee /dev/tty | tail -n 1")
+res=$(bash -c ". listbox.sh && listbox -t \"Title\" -o \"option 1|option 2|option 3\" | tee /dev/tty | tail -n 1")
 ```
 
 ## Like it?
