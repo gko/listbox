@@ -57,10 +57,7 @@ user chose: option 2
 
 ## What about zsh
 
-In zsh you can use it like this:
-```bash
-res=$(bash -c ". listbox.sh && listbox -t \"Title\" -o \"option 1|option 2|option 3\" | tee /dev/tty | tail -n 1")
-```
+It supports zsh as well. Same usage as for bash.
 
 ## Like it?
 
