@@ -1,5 +1,6 @@
 # Listbox
 💬 listbox element for bash
+![demo](https://github.com/gko/listbox/raw/master/demo.gif)
 
 Simple bash listbox to choose from options
 
