@@ -1,18 +1,34 @@
 #!/bin/bash
 
 listbox() {
-  while [[ $# -gt 1 ]]
+  while [[ $# -gt 0 ]]
   do
     key="$1"
 
     case $key in
       -h|--help)
-        echo "listbox -t title -o \"option 1|option 2|option 3\" -r resultVariable -a '>'"
+        echo "choose from list of options"
+        echo "Usage: listbox [options]"
+        echo "Example:"
+        echo "  listbox -t title -o \"option 1|option 2|option 3\" -r resultVariable -a '>'"
+        echo "Options:"
+        echo "  -h, --help                         help"
+        echo "  -t, --title                        list title"
+        echo "  -o, --options \"option 1|option 2\"  listbox options"
+        echo "  -r, --result <var>                 result variable"
+        echo "  -a, --arrow <symbol>               selected option symbol"
         return 0
-        shift
         ;;
       -o|--options)
-        IFS='|' read -a opts <<< "$2"
+        local OIFS=$IFS;
+        IFS="|";
+        # check if zsh/bash
+        if [ -n "$ZSH_VERSION" ]; then
+          IFS=$'\n' opts=($(echo "$2" | tr "|" "\n"))
+        else
+          IFS="|" read -a opts <<< "$2";
+        fi
+        IFS=$OIFS;
         shift
         ;;
       -t|--title)
@@ -49,7 +65,8 @@ listbox() {
   fi
 
   draw() {
-    for idx in ${!opts[*]}
+    local idx=0 
+    for it in "${opts[@]}"
     do
       local str="";
       if [ $idx -eq $choice ]; then
@@ -57,12 +74,13 @@ listbox() {
       else
         str+="  "
       fi
-      echo "$str${opts[$idx]}"
+      echo "$str$it"
+      idx=$((idx+1))
     done
   }
 
   move() {
-    for it in ${!opts[*]}
+    for it in "${opts[@]}"
     do
       tput cuu1
     done
@@ -72,7 +90,7 @@ listbox() {
   listen() {
     while true
     do
-      read -n 1 -s key
+      key=$(bash -c "read -n 1 -s key; echo \$key")
 
       if [[ $key = q ]]; then
         break
@@ -89,6 +107,11 @@ listbox() {
           draw
         fi
       elif [[ $key = "" ]]; then
+        # check if zsh/bash
+        if [ -n "$ZSH_VERSION" ]; then
+          choice=$((choice+1))
+        fi
+
         if [[ -n $__result ]]; then
           eval "$__result=\"${opts[$choice]}\""
         else
