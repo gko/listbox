@@ -1,10 +1,22 @@
 # Listbox
 💬 listbox element for bash
+
 ![demo](https://github.com/gko/listbox/raw/master/demo.gif)
 
 Simple bash listbox to choose from options
 
 ## Usage
+```
+Usage: listbox [options]
+Example:
+  listbox -t title -o "option 1|option 2|option 3" -r resultVariable -a '>'
+Options:
+  -h, --help                         help
+  -t, --title                        list title
+  -o, --options "option 1|option 2"  listbox options
+  -r, --result <var>                 result variable
+  -a, --arrow <symbol>               selected option symbol
+```
 ### General usage
 ```bash
 source ./listbox.sh
