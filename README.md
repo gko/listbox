@@ -5,6 +5,23 @@
 
 Simple bash listbox to choose from options
 
+## Installation
+
+### Manually
+```bash
+git clone https://github.com/gko/listbox
+```
+then in .bashrc or .zshrc:
+```bash
+source ./listbox/listbox.sh
+```
+### With [antigen](https://github.com/zsh-users/antigen)
+
+In your .zshrc
+```sh
+antigen bundle gko/listbox
+```
+
 ## Usage
 ```
 Usage: listbox [options]
