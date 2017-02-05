@@ -85,10 +85,6 @@ output:
 user chose: option 2
 ```
 
-## What about zsh
-
-It supports zsh as well. Same usage as for bash.
-
 ## Like it?
 
 :star: this repo
