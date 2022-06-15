@@ -20,6 +20,14 @@ then in .bashrc or .zshrc:
 source ./listbox/listbox.sh
 ```
 
+### With [Fig](https://fig.io)
+
+Fig adds apps, shortcuts, and autocomplete to your existing terminal.
+
+Install `listbox` in just one click.
+
+<a href="https://fig.io/plugins/other/listbox_gko" target="_blank"><img src="https://fig.io/badges/install-with-fig.svg" /></a>
+
 ### With [antigen](https://github.com/zsh-users/antigen)
 
 In your .zshrc
